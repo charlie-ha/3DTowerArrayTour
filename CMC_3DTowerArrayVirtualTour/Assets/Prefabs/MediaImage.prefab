@@ -484,3 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb2ffe7501f54df29f5abe656946c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefab: {fileID: 0}
+  spawnPosition: {fileID: 0}
+  tutorialPanel4: {fileID: 58374961657374214, guid: b54b20c688d194f7da2f485bbf7cb9fd, type: 3}
+  tutorial: 1

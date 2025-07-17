@@ -18,6 +18,8 @@ public class VirtualTourCameraController : MonoBehaviour
     private bool hasSwiped = false;
     [SerializeField] private GameObject firstTutorialPanel;
 
+    public bool tutorial;//spawn tutorial panel 4
+    
     void Awake()
     {
         // Create a new InputAction for look control (mouse delta or touch drag)
@@ -39,7 +41,7 @@ public class VirtualTourCameraController : MonoBehaviour
 
         Quaternion yawRotation = Quaternion.Euler(_pitch, _yaw, 0f);
         //create Euler rotation based on user input; Quaternion represent rotation in 3D space 
-        Debug.Log("yaw rotation"+yawRotation);
+         
         RotateCamera(yawRotation);//do the rotation
     }
     public void HandleInput()

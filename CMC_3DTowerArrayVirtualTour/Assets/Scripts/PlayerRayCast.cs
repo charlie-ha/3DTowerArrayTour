@@ -95,11 +95,19 @@ public class PlayerRayCast : MonoBehaviour
                         {
                             GameObject clickedHotspot = hit.collider.gameObject;
 
+
+                            //close tutorial panel at is above tutorial hotspot
+                            CloseTutorialPanel tutorialHotspot = hit.collider.gameObject.GetComponent<CloseTutorialPanel>();
+                            if (tutorialHotspot != null)
+                            {
+                                tutorialHotspot.tutorialPanel.SetActive(false);
+                            }
+
                             // Move the camera to the hotspot's x and y position
                             Vector3 newPosition = new Vector3(
                                 clickedHotspot.transform.position.x,
-                                clickedHotspot.transform.position.y,
-                                cameraTransform.position.z
+                                cameraTransform.position.y,
+                                clickedHotspot.transform.position.z
                             );
 
                             cameraTransform.position = newPosition;
@@ -119,7 +127,23 @@ public class PlayerRayCast : MonoBehaviour
                         {
                             Instantiate(hoveredHotspot.GetComponent<HotspotScript>().prefabToSpawn);
                             enabled = false;//disable raycast so we dont click through UI
+
+                            //close tutorial panel at is above tutorial hotspot
+                            CloseTutorialPanel tutorialHotspot = hit.collider.gameObject.GetComponent<CloseTutorialPanel>();
+                            if (tutorialHotspot != null)
+                            {
+                                tutorialHotspot.tutorialPanel.SetActive(false);
+                            }
                         }
+                        // else if()
+                        // {
+                        //     //close tutorial panel at is above tutorial hotspot
+                        //     CloseTutorialPanel tutorialHotspot = hit.collider.gameObject.GetComponent<CloseTutorialPanel>();
+                        //     if (tutorialHotspot != null)
+                        //     {
+                        //         tutorialHotspot.tutorialPanel.SetActive(false);
+                        //     }
+                        // }
 
                         
                     }
