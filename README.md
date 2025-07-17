@@ -13,9 +13,23 @@ Web?
 Unity version? 6000.0.10f1?
 
 Blueprint with measurements of the tower array.
+How to use Testflight
+https://www.youtube.com/watch?v=6VuLukGpNv8
+
+References
 https://www.trains.com/ctr/photos-videos/photo-of-the-day/nerve-center-of-cincinnati-union-terminal/
 https://www.trainaficionado.com/tower-a/
 
+Project Features:
+(somewhat) Stylized but close to 3D rendered realism
+Switch the tower array space between different eras (1930s v now)
+Pull crank handles and turn signal light on
+Stretch goals:
+Models of trains run through the tracks
+A virtual mannequin gives narration of the space
+
+Note to self:
+If Android build doesn't work, change back to URP Performance Config.
 
 Sizing
 1 unit in Unity = 1 meter
@@ -29,7 +43,6 @@ Description: This is the main scene used for VR
 MainTowerScene_Touchscreen
 Description: This is the main scene used for Mobile Tour project.
 
-
 TowerScene_LevelDesign
 Description: This is the scene used for level design. 
 
@@ -38,6 +51,7 @@ CanvasUIScript.
 Attached in MediaImage>RawImageMedia>CloseButton
 Used to spawn images for player in VR project
 Used in close button to close the image/video on the screen in Mobile Tour project.
+For tutorial, used to make Tutorial Panel 4 appear.
 
 using System.Collections;
 using System.Collections.Generic;
@@ -47,9 +61,23 @@ using UnityEngine;
 public class CanvasUIScript : MonoBehaviour
 {
    public GameObject prefab;
+   public Transform spawnPosition;
+  
+   public GameObject tutorialPanel4;
+  
+   [SerializeField] private VirtualTourCameraController playerCamera;
+   void Start()
+   {
+       playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<VirtualTourCameraController>();
+   }
+
+
    public void DestroyGameObject(GameObject thisGameObject)
    {
        Destroy(thisGameObject);
+       if(playerCamera.tutorial == true)
+           Instantiate(tutorialPanel4);
+           playerCamera.tutorial = false;
    }
    public void EnableRaycast(bool boolean)
    {
@@ -59,11 +87,9 @@ public class CanvasUIScript : MonoBehaviour
 
    public void SpawnPrefab()// spawn prefab/images/videos for VR project
    {
-       Instantiate(prefab, new Vector3(8f,301.7f, -4f), Quaternion.identity);
+       Instantiate(prefab, spawnPosition.position, Quaternion.identity);
    }
 }
-
-
 PlayerRaycast
 Attached to VirtualTourCamera
 Used for player to move around the scene by clicking on hotspots
@@ -71,6 +97,7 @@ Used for player to move around the scene by clicking on hotspots
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class PlayerRayCast : MonoBehaviour
@@ -102,6 +129,19 @@ public class PlayerRayCast : MonoBehaviour
    public bool enabled = true;
 
 
+   private InputAction pointerPositionAction;
+
+
+   void Awake()
+   {
+       // Binds to both mouse and touchscreen pointer position
+       pointerPositionAction = new InputAction(
+           name: "PointerPosition",
+           type: InputActionType.Value,
+           binding: "<Pointer>/position"
+       );
+       pointerPositionAction.Enable();
+   }
    // Start is called once before the first execution of Update after the MonoBehaviour is created
    void Start()
    {
@@ -122,7 +162,21 @@ public class PlayerRayCast : MonoBehaviour
    {
        if(enabled)//make sure we dont click through UI
        {
-           ray = mainCam.ScreenPointToRay(Input.mousePosition);//create ray from mouse to object
+           //Vector2 pointerPosition = pointerPositionAction.ReadValue<Vector2>();
+           Vector2 pointerPosition = Vector2.zero;
+
+
+           if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+           {
+               pointerPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+           }
+           else if (Mouse.current != null && Mouse.current.leftButton.isPressed)
+           {
+               pointerPosition = Mouse.current.position.ReadValue();
+           }
+
+
+           ray = mainCam.ScreenPointToRay(pointerPosition);//create ray from mouse to object
            if(Physics.Raycast(ray, out hit))
            {
                if (hit.collider.CompareTag("hotspot"))
@@ -147,18 +201,28 @@ public class PlayerRayCast : MonoBehaviour
                    lastHoveredHotspot = hoveredHotspot;
 
 
-                   if(Input.GetMouseButtonDown(0))//click on hotspot
+                   if(Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)//click on hotspot
                    {  
                        if(hoveredHotspot.GetComponent<HotspotScript>().isSpawningPrefab == false)
                        {
                            GameObject clickedHotspot = hit.collider.gameObject;
 
 
+
+
+                           //close tutorial panel at is above tutorial hotspot
+                           CloseTutorialPanel tutorialHotspot = hit.collider.gameObject.GetComponent<CloseTutorialPanel>();
+                           if (tutorialHotspot != null)
+                           {
+                               tutorialHotspot.tutorialPanel.SetActive(false);
+                           }
+
+
                            // Move the camera to the hotspot's x and y position
                            Vector3 newPosition = new Vector3(
                                clickedHotspot.transform.position.x,
-                               clickedHotspot.transform.position.y,
-                               cameraTransform.position.z
+                               cameraTransform.position.y,
+                               clickedHotspot.transform.position.z
                            );
 
 
@@ -181,7 +245,24 @@ public class PlayerRayCast : MonoBehaviour
                        {
                            Instantiate(hoveredHotspot.GetComponent<HotspotScript>().prefabToSpawn);
                            enabled = false;//disable raycast so we dont click through UI
+
+
+                           //close tutorial panel at is above tutorial hotspot
+                           CloseTutorialPanel tutorialHotspot = hit.collider.gameObject.GetComponent<CloseTutorialPanel>();
+                           if (tutorialHotspot != null)
+                           {
+                               tutorialHotspot.tutorialPanel.SetActive(false);
+                           }
                        }
+                       // else if()
+                       // {
+                       //     //close tutorial panel at is above tutorial hotspot
+                       //     CloseTutorialPanel tutorialHotspot = hit.collider.gameObject.GetComponent<CloseTutorialPanel>();
+                       //     if (tutorialHotspot != null)
+                       //     {
+                       //         tutorialHotspot.tutorialPanel.SetActive(false);
+                       //     }
+                       // }
 
 
                       
@@ -205,10 +286,25 @@ public class PlayerRayCast : MonoBehaviour
                        lastHoveredHotspot = null;
                    }
                }
+              
            }
        }
    }
+   void OnDisable()
+   {
+       pointerPositionAction?.Disable();
+   }
+
+
+   void OnDestroy()
+   {
+       pointerPositionAction?.Dispose();
+   }
 }
+
+
+
+
 
 
 HotspotScript
@@ -239,19 +335,43 @@ Used to rotate the camera around by swiping on screen on using the mouse.
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class VirtualTourCameraController : MonoBehaviour
 {
-   private float sensitivity = 1000f;//how fast camera rotate
+   public float sensitivity = 0.1f; // lower this for touch-friendly control
 
 
    private float _yaw = 0f;//rotate y axis (vertical)
    private float _pitch = 0f;//rotate x axics (horizontal)
    [SerializeField] private float pitchClamp = 80f;//stop camera from flipping
+  
+   private Vector2 _inputDelta;
 
 
-   // Update is called once per frame
+   private InputAction lookAction;
+
+
+   private bool hasSwiped = false;
+   [SerializeField] private GameObject firstTutorialPanel;
+
+
+   public bool tutorial;//spawn tutorial panel 4
+  
+   void Awake()
+   {
+       // Create a new InputAction for look control (mouse delta or touch drag)
+       lookAction = new InputAction(
+           name: "Look",
+           type: InputActionType.Value,
+           binding: "<Pointer>/delta"
+       );
+       lookAction.Enable();
+       firstTutorialPanel.SetActive(true);
+   }
+
+
    void Update()
    {
        HandleInput();//handle input from player
@@ -263,32 +383,33 @@ public class VirtualTourCameraController : MonoBehaviour
 
        Quaternion yawRotation = Quaternion.Euler(_pitch, _yaw, 0f);
        //create Euler rotation based on user input; Quaternion represent rotation in 3D space
-
-
+       
        RotateCamera(yawRotation);//do the rotation
    }
    public void HandleInput()
    {
-       Vector2 inputDelta = Vector2.zero;//track change in position of mouse or finger on touchscreen
-       //Vector2.zero is (0,0,0)
-
-
-       if(Input.touchCount > 0)//there are at least 1 touch on screen
+       _inputDelta = lookAction.ReadValue<Vector2>();
+       _yaw += _inputDelta.x * sensitivity * Time.deltaTime;
+       _pitch -= _inputDelta.y * sensitivity * Time.deltaTime;
+       if(hasSwiped) return;
+       if(Mathf.Abs(_yaw) >= 3f || Mathf.Abs(_pitch)>= 3f)
        {
-           Touch touch = Input.GetTouch(0);//get first touch being detected
-           inputDelta = touch.deltaPosition;//change in position of touch point
+           firstTutorialPanel.SetActive(false);
        }
-       else if (Input.GetMouseButton(0))
-       {
-           inputDelta = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-           //change in position of mouse positions and store to inputDelta
-       }
-       _yaw += inputDelta.x * sensitivity * Time.deltaTime;
-       _pitch -= inputDelta.y * sensitivity * Time.deltaTime;
    }
    void RotateCamera(Quaternion rotation)
    {
        transform.rotation = rotation;
+   }
+   void OnDisable()
+   {
+       lookAction?.Disable();
+   }
+
+
+   void OnDestroy()
+   {
+       lookAction?.Dispose();
    }
 }
 
@@ -317,6 +438,64 @@ public class LookAtMe : MonoBehaviour
            hs.transform.LookAt(transform.position);
        }
    }
+}
+
+
+RailControllerHandleScript
+[VR] attached to valve/handle to change train track rails or turn on lights on the terminal?
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.XR.Content.Interaction;
+
+
+public class RailControllerHandleScript : MonoBehaviour
+{
+   public XRKnob trainControllerHandle;
+   public Light trainTerminalLight;
+   //public AudioSource knobAudio;
+   
+   // Start is called once before the first execution of Update after the MonoBehaviour is created
+   void Start()
+   {
+      
+   }
+
+
+   // Update is called once per frame
+   void Update()
+   {
+       if(trainControllerHandle.value >= 0.8f)
+       {
+           trainTerminalLight.intensity = 100f;//turn on the light when handle turned right
+           //knobAudio.Play();
+       }
+       else if (trainControllerHandle.value <= 0.5f)
+       {
+           trainTerminalLight.intensity = 0f;//turn off the light when handle turned left
+           //knobAudio.Stop();
+       }
+   }
+}
+
+
+CloseTutorialPanel
+[Mobile] Attached to UIs created by pre
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class CloseTutorialPanel : MonoBehaviour
+{
+   public GameObject tutorialPanel;
+   void Start()
+   {
+       tutorialPanel.SetActive(true);
+   }
+
+
 }
 
 
