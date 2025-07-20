@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuScript : MonoBehaviour
+public class MobileInGameMenuScript : MonoBehaviour
 {
-    public GameObject creditsPanel;//for main menu scene
+    
     
     //for touchscreen scene
     public GameObject menuPanel;
@@ -14,10 +14,12 @@ public class MainMenuScript : MonoBehaviour
     public GameObject hamburgerButton; 
     public GameObject returnToMainMenu; 
     public GameObject settingsButton; 
+    public GameObject tutorialButton; 
     public GameObject closeButton; 
     public GameObject settingsPanel; 
     public GameObject soundManager;
-    //main menu scene
+    public GameObject tutorialPanel;
+    
 
     [Header("Sliders")]
     public Slider brightnessSlider;
@@ -41,6 +43,7 @@ public class MainMenuScript : MonoBehaviour
         settingsPanel.SetActive(false);
         returnToMainMenu.SetActive(false);
         settingsButton.SetActive(false);
+        tutorialButton.SetActive(false);
         closeButton.SetActive(false);
         menuPanelImage.color = new Color(0f,0f,0f,0f);
 
@@ -60,39 +63,14 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
-    // Called when Start Game button is pressed
-    public void StartGame()
-    {
-        // Loads the next scene in Build Settings
-        SceneManager.LoadScene(1);
-    }
-
-    // Called when Credits button is pressed
-    public void ShowCredits()
-    {
-        if (creditsPanel != null)
-            creditsPanel.SetActive(true);
-    }
-
-    // Called when Back button on Credits panel is pressed
-    public void HideCredits()
-    {
-        if (creditsPanel != null)
-            creditsPanel.SetActive(false);
-    }
-
-    // Called when Quit button is pressed
-    public void QuitGame()
-    {
-        Debug.Log("Quit Game"); // Shows in editor
-        Application.Quit();     // Actually quits in build
-    }
+    
 
     ///////touchscreen scene////////
     public void OpenMenuPanel()//press hamburger menu button
     {
         menuPanelImage.color = new Color(0f,0f,0f,230/255f);
         hamburgerButton.SetActive(false);
+        tutorialButton.SetActive(true);
         closeButton.SetActive(true);
         settingsButton.SetActive(true);
         returnToMainMenu.SetActive(true);
@@ -141,5 +119,10 @@ public class MainMenuScript : MonoBehaviour
         }
         if (volumeText != null)
             volumeText.text = Mathf.RoundToInt(volumeValue * 100f) + "%";
+    }
+
+    public void OpenTutorialPanel()
+    {
+        tutorialPanel.SetActive(true);
     }
 }

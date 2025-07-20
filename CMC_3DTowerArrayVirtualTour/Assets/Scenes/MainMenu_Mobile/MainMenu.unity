@@ -1232,8 +1232,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9190129739543219876}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 9190129739543219875}
+        m_TargetAssemblyTypeName: MobileMainMenuScript, Assembly-CSharp
         m_MethodName: ShowCredits
         m_Mode: 1
         m_Arguments:
@@ -1633,8 +1633,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9190129739543219876}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 9190129739543219875}
+        m_TargetAssemblyTypeName: MobileMainMenuScript, Assembly-CSharp
         m_MethodName: HideCredits
         m_Mode: 1
         m_Arguments:
@@ -2224,8 +2224,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9190129739543219876}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 9190129739543219875}
+        m_TargetAssemblyTypeName: MobileMainMenuScript, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -2356,8 +2356,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9190129739543219876}
-        m_TargetAssemblyTypeName: MainMenuScript, Assembly-CSharp
+      - m_Target: {fileID: 9190129739543219875}
+        m_TargetAssemblyTypeName: MobileMainMenuScript, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -3143,18 +3143,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &9086962270521903528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9190129739543219874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d09316216274ac94bbbbdc495123c59f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9086993753729387574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3437,9 +3425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8976737752829839908}
-  - component: {fileID: 9086962270521903528}
   - component: {fileID: 9190129739543219875}
-  - component: {fileID: 9190129739543219876}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -3456,19 +3442,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9190129739543219874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd6ebe74447244c809bbd62444a2a543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9190129739543219876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9190129739543219874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2572089400bdd4bb8ba2553ad04815e4, type: 3}
+  m_Script: {fileID: 11500000, guid: cbe552d690c19486a82bb5d42c04bd83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   creditsPanel: {fileID: 153194237}

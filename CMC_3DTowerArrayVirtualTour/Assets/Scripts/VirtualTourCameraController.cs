@@ -29,7 +29,7 @@ public class VirtualTourCameraController : MonoBehaviour
             binding: "<Pointer>/delta"
         );
         lookAction.Enable();
-        firstTutorialPanel.SetActive(true);
+        //firstTutorialPanel.SetActive(true);
     }
 
     void Update()
@@ -50,10 +50,10 @@ public class VirtualTourCameraController : MonoBehaviour
         _yaw += _inputDelta.x * sensitivity * Time.deltaTime;
         _pitch -= _inputDelta.y * sensitivity * Time.deltaTime;
         if(hasSwiped) return;
-        if(Mathf.Abs(_yaw) >= 3f || Mathf.Abs(_pitch)>= 3f)
-        {
-            firstTutorialPanel.SetActive(false);
-        }
+        // if(Mathf.Abs(_yaw) >= 3f || Mathf.Abs(_pitch)>= 3f)
+        // {
+        //     firstTutorialPanel.SetActive(false);
+        // }
     }
     void RotateCamera(Quaternion rotation)
     {
