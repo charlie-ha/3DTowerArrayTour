@@ -307,7 +307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1376468854151318807
 RectTransform:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2254923488773467853}
-  m_LocalRotation: {x: -0, y: 0.05849945, z: -0, w: 0.99828744}
+  m_LocalRotation: {x: 0, y: 0.058496222, z: 0, w: 0.9982876}
   m_LocalPosition: {x: 0, y: 0, z: 4.209}
   m_LocalScale: {x: 0.0023225457, y: 0.0023225457, z: 0.0023225457}
   m_ConstrainProportionsScale: 0
@@ -411,7 +411,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   spawnPosition: {fileID: 0}
   tutorialPanel4: {fileID: 0}
-  tutorial: 0
+  playerCamera: {fileID: 0}
 --- !u!1 &3950330219152704456
 GameObject:
   m_ObjectHideFlags: 0
