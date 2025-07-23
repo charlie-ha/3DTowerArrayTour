@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ea9584b578ef684ba8aa99cf9d21c23
+guid: 1def237b2583a430786c993cc10274bc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: c34063d3237f44798b0ed784d2e08485, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.001
-    second: {fileID: 2100000, guid: 62380866b703b4439b51f1b1f48c8264, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: 92c35d753f55746e78479e58a38b7517, type: 2}
+      name: M_Clock
+    second: {fileID: 2100000, guid: 70cb31cb566db4bec8b99e1cb6aef6f7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -13,9 +13,11 @@ public class TrainTerminalLeverScript : MonoBehaviour
     public void ActivateLight()
     {
         terminalLightBulb.material = activatedMaterial;//activate lever, turns light blue
+        trainTerminalLight.intensity = 100f;
     }
     public void DeactivateLight()
     {
         terminalLightBulb.material = defaultMaterial;//deactivate lever, turns light white
+        trainTerminalLight.intensity = 0f;
     }
 }
