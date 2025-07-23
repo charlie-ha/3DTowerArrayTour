@@ -14,6 +14,9 @@ public class MobileInGameMenuScript : MonoBehaviour
     public GameObject hamburgerButton; 
     public GameObject returnToMainMenu; 
     public GameObject settingsButton; 
+    public GameObject sceneSwitchButton; //past/present
+    public GameObject past_PRESENT; //past / PRESENT
+    public GameObject PAST_present; //PAST / present
     public GameObject tutorialButton; 
     public GameObject closeButton; 
     public GameObject settingsPanel; 
@@ -43,6 +46,9 @@ public class MobileInGameMenuScript : MonoBehaviour
         settingsPanel.SetActive(false);
         returnToMainMenu.SetActive(false);
         settingsButton.SetActive(false);
+        sceneSwitchButton.SetActive(false);
+        //past_PRESENT.SetActive(false);
+        //PAST_present.SetActive(false);
         tutorialButton.SetActive(false);
         closeButton.SetActive(false);
         menuPanelImage.color = new Color(0f,0f,0f,0f);
@@ -73,6 +79,9 @@ public class MobileInGameMenuScript : MonoBehaviour
         tutorialButton.SetActive(true);
         closeButton.SetActive(true);
         settingsButton.SetActive(true);
+        sceneSwitchButton.SetActive(true);
+        //past_PRESENT.SetActive(true);
+        //PAST_present.SetActive(false);
         returnToMainMenu.SetActive(true);
 
     }
@@ -80,9 +89,13 @@ public class MobileInGameMenuScript : MonoBehaviour
     {
         menuPanelImage.color = new Color(0f,0f,0f,0f);
         hamburgerButton.SetActive(true);
+        tutorialButton.SetActive(false);
         settingsPanel.SetActive(false);
+        sceneSwitchButton.SetActive(false);
         returnToMainMenu.SetActive(false);
         settingsButton.SetActive(false);
+        //past_PRESENT.SetActive(false);
+        //PAST_present.SetActive(false);
         closeButton.SetActive(false);
     }
     public void OpenSettingsPanel()
