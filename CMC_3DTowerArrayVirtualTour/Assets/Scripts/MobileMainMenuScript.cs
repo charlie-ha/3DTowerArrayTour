@@ -31,7 +31,6 @@ public class MobileMainMenuScript : MonoBehaviour
     // Called when Quit button is pressed
     public void QuitGame()
     {
-        Debug.Log("Quit Game"); // Shows in editor
         Application.Quit();     // Actually quits in build
     }
 }

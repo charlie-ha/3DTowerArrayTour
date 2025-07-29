@@ -106,7 +106,6 @@ public class MobileInGameMenuScript : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
-        Debug.Log("cliked");
     }
 
     public void UpdateBrightness(float value)

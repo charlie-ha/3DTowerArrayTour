@@ -52,7 +52,6 @@ public class MobileTutorialManager : MonoBehaviour
             previousButton.SetActive(false);
             nextButton.SetActive(true);
 
-            Debug.Log("current index " +index);
         }
         else if(index == 2)//tutorial step 2: tap on hotspot
         {
@@ -98,7 +97,6 @@ public class MobileTutorialManager : MonoBehaviour
             previousButton.SetActive(false);
             nextButton.SetActive(false);
         }
-        Debug.Log("pressed, new index is "+ index);
 
     }
 
