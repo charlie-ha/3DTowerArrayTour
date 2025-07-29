@@ -29,14 +29,23 @@ public class UIScale : MonoBehaviour
 
         if (screenRatio < 1.5f) // e.g., iPad 4:3
         {
-            scale *= 1.15f;
+            scale = 0.95f;
         }
-        else if (screenRatio > 2.0f) // e.g., ultra-wide phones
+        // if (screenRatio >=1.5f && screenRatio <= 2.0f)//~ 1.7
+        // {
+        //     scale = 0.95f;
+        //     Debug.Log("activated");
+        // }
+        if (screenRatio > 2.0f) // e.g., ultra-wide phones
         {
             scale *= 0.95f;
         }
-
+        
         //scale = Mathf.Clamp(scale, minScale, maxScale);
         transform.localScale = new Vector3(scale, scale, scale);
+        // Debug.Log("screen scale is " +scale );
+        // Debug.Log($"Screen.width: {Screen.width}, Screen.height: {Screen.height}");
+        // Debug.Log($"Calculated screenRatio: {(float)Screen.width / Screen.height:F5}");
+
     }
 }
