@@ -16,10 +16,10 @@ public class UIScale : MonoBehaviour
     }
     void Update()
     {
-        if (Keyboard.current.fKey.isPressed)
-        {
-            AdjustScale();
-        }
+        // if (Keyboard.current.fKey.isPressed)
+        // {
+        //     AdjustScale();
+        // }
     }
 
     void AdjustScale()
