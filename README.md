@@ -47,6 +47,22 @@ TowerScene_LevelDesign
 Description: This is the scene used for level design. 
 
 Codes
+ButtonVR
+[VR Scene] Attached to buttons in Electro Pneumatic Interlocking Control (EPIC) Machine.
+This script will handle how levers work.
+How the lights above the EPIC machine are laid out: 
+The 1st and 3rd rows are Reverse Light, 2nd and 4th rows are Normal Light. 
+1st and 2nd rows are for Upper levers (levers that point upwards⬆️). 3rd and 4th are for Lower levers (levers that point downwards⬇️).
+Each lever controls a set of Reverse Light and Normal Light, corresponding to the levers’ positions - Reverse Position and Normal Position. Reverse Position is when the lever is turned left, Normal Position is when the lever is turned right, Neutral Position is when the lever is in the middle.
+How the EPIC machine works: 
+Choose a set of light, i.e. the 1st light set.
+Press the 1st button to unlock lever 1. (You need to press the button to use the lever, if not, the lever won’t work)
+Turn lever 1 to left or right to turn on Reverse or Normal Light.
+
+Simple diagram on how the EPIC machine works
+
+Downside of this script is you need to wire all of the lightIndicator, trainControllerHandle, trainTerminalLightReverse, trainTerminalLightNormal, lever to each lever for each button.
+
 CanvasUIScript. 
 Attached in MediaImage>RawImageMedia>CloseButton
 Used to spawn images for player in VR project
