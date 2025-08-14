@@ -2,14 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
-using UnityEngine.InputSystem; // Make sure this namespace is used
+using UnityEngine.InputSystem; // for debugging purposes
 using UnityEngine.XR.Content.Interaction;
 
 
 
 public class ButtonVR : MonoBehaviour
 {
-    //button press logic: press button->unlock handle->turn handle-> lock handle
+    //button press logic: press button->light above button turns on->unlock handle->turn handle-> lock handle->light above button turns off
     public GameObject button;
     public UnityEvent onPress;
     public UnityEvent onRelease;
@@ -21,12 +21,12 @@ public class ButtonVR : MonoBehaviour
     bool isPressed;
     private Vector3 buttonOriginalPosition;
 
-    //Train Handle logic: only move when button is pressed, when get to reverse or normal position, locks lever
-    public XRKnob trainControllerHandle;
+    //Train Handle logic: only move when button is pressed, when get to Reverse Position->Reverse Light turns on; Normal Position->Normal Light turns on, after 10s locks lever
+    public XRKnob trainControllerHandle;//get access to which angle is the lever
     public Renderer trainTerminalLightReverse;//this light indicates reverse position
     public Renderer trainTerminalLightNormal;//this light indicates normal position
     public Material greenLight;//swap this material in trainTerminalLight when lever is in reverse or normal position
-    public GameObject lever;
+    public GameObject lever;//to get the Sphere Collider in the lever
 
     private float timer = 0f;//count time
     private float timeLimit = 10f;//10 seconds
@@ -44,7 +44,7 @@ public class ButtonVR : MonoBehaviour
 
     void Update()
     {
-        if(Keyboard.current.fKey.wasPressedThisFrame)
+        if(Keyboard.current.fKey.wasPressedThisFrame)//for debuggign, will delete after finish debug
         {
             Vector3 currentPosition = button.transform.localPosition;
             currentPosition.y -= 0.002f;
@@ -68,20 +68,20 @@ public class ButtonVR : MonoBehaviour
             }
             if(trainControllerHandle.value == 0f)//train handle turns left-> handle is in reverse position
             {
-                trainTerminalLightReverse.material = greenLight;//terminal light is off
-                trainTerminalLightNormal.material = lightOff;//terminal light is off
+                trainTerminalLightReverse.material = greenLight;//Reverse terminal light is off
+                trainTerminalLightNormal.material = lightOff;//Normal terminal light is off
 
             }
             else if(trainControllerHandle.value == 1f)//train handle turns right-> handle is in normal position
             {
-                trainTerminalLightReverse.material = lightOff;//terminal light is off
-                trainTerminalLightNormal.material = greenLight;//terminal light is off
+                trainTerminalLightReverse.material = lightOff;//Reverse terminal light is off
+                trainTerminalLightNormal.material = greenLight;//Normal terminal light is off
 
             }
             else if(trainControllerHandle.value == 0.5f)//train handle in the center-> handle is in neutral position
             {
-                trainTerminalLightReverse.material = lightOff;//terminal light is off
-                trainTerminalLightNormal.material = lightOff;//terminal light is off
+                trainTerminalLightReverse.material = lightOff;//Reverse terminal light is off
+                trainTerminalLightNormal.material = lightOff;//Normal terminal light is off
                  
             }
         }
@@ -98,7 +98,7 @@ public class ButtonVR : MonoBehaviour
 
             onPress.Invoke();
             sound.Play();
-            lightIndicator.material = lightOn;
+            lightIndicator.material = lightOn;//light above button is on
             isPressed = true;
             lever.GetComponent<SphereCollider>().enabled = true;//let player interact lever
         }
