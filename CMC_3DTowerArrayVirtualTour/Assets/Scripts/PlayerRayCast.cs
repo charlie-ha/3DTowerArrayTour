@@ -148,6 +148,16 @@ public class PlayerRayCast : MonoBehaviour
                         
                     }
                 }
+                else if(hit.collider.CompareTag("button"))//hit button
+                {
+                    GameObject button = hit.collider.gameObject;
+                    button.GetComponent<ButtonMobile>().PressButton();
+                }
+                else if(hit.collider.CompareTag("lever"))//hit lever
+                {
+                    GameObject lever = hit.collider.gameObject;
+                    lever.GetComponent<EPICLeverScript>().TurnLever();
+                }
                 else
                 {
                     // foreach (GameObject hs in allHotspots)//make sure all hotpots are at default scale

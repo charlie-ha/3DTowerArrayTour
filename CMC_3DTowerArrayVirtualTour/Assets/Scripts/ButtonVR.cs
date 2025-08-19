@@ -29,7 +29,7 @@ public class ButtonVR : MonoBehaviour
     public GameObject lever;//to get the Sphere Collider in the lever
 
     private float timer = 0f;//count time
-    private float timeLimit = 10f;//10 seconds
+    private float timeLimit = 30f;//10 seconds
 
     void Start()
     {
