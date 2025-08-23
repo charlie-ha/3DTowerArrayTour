@@ -23,7 +23,7 @@ public class PlayerRayCast : MonoBehaviour
     private Color defaultColor = Color.white;
     private Color hoverColor = new Color(203f/255f, 4f/255f, 4f/255f);
 
-    public bool enabled = true;
+    public bool rayCastEnabled = true;
 
     private InputAction pointerPositionAction;
 
@@ -54,7 +54,7 @@ public class PlayerRayCast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enabled)//make sure we dont click through UI
+        if(rayCastEnabled)//make sure we dont click through UI
         {
             //Vector2 pointerPosition = pointerPositionAction.ReadValue<Vector2>();
             Vector2 pointerPosition = Vector2.zero;
@@ -126,7 +126,7 @@ public class PlayerRayCast : MonoBehaviour
                         else if(hoveredHotspot.GetComponent<HotspotScript>().isSpawningPrefab == true)//spawn image/video/text
                         {
                             Instantiate(hoveredHotspot.GetComponent<HotspotScript>().prefabToSpawn);
-                            enabled = false;//disable raycast so we dont click through UI
+                            rayCastEnabled = false;//disable raycast so we dont click through UI
 
                             //close tutorial panel at is above tutorial hotspot
                             CloseTutorialPanel tutorialHotspot = hit.collider.gameObject.GetComponent<CloseTutorialPanel>();
