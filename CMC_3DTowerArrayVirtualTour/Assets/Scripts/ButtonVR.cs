@@ -56,7 +56,6 @@ public class ButtonVR : MonoBehaviour
             lightIndicator.material = lightOn;
             isPressed = true;
             lever.GetComponent<SphereCollider>().enabled = true;//let player interact lever
-            Debug.Log("light on");
         }
         
         if(isPressed == true)//unlock lever
@@ -97,6 +96,7 @@ public class ButtonVR : MonoBehaviour
             button.transform.localPosition = currentPosition;//press button down
 
             onPress.Invoke();
+            sound.pitch = Random.Range(0.9f, 1.1f);
             sound.Play();
             lightIndicator.material = lightOn;//light above button is on
             isPressed = true;
@@ -113,7 +113,6 @@ public class ButtonVR : MonoBehaviour
         timer = 0f;
         lever.GetComponent<SphereCollider>().enabled = false;//dont let player interact lever
         isPressed = false;
-        Debug.Log("light off");
     }
 
 

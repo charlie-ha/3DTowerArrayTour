@@ -121,18 +121,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6781983348315789423}
-        m_TargetAssemblyTypeName: DestroyThis, Assembly-CSharp
-        m_MethodName: DestroyGameObject
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 5384385294512811721}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6781983348315789423}
         m_TargetAssemblyTypeName: CanvasUIScript, Assembly-CSharp
         m_MethodName: EnableRaycast
         m_Mode: 6
@@ -143,6 +131,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6781983348315789423}
+        m_TargetAssemblyTypeName: CanvasUIScript, Assembly-CSharp
+        m_MethodName: DestroyGameObject
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5384385294512811721}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1648587918919415906
 GameObject:
@@ -486,5 +486,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   spawnPosition: {fileID: 0}
-  tutorialPanel4: {fileID: 58374961657374214, guid: b54b20c688d194f7da2f485bbf7cb9fd, type: 3}
-  tutorial: 1
+  playerCamera: {fileID: 0}

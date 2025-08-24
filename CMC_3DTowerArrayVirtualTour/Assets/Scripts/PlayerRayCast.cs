@@ -7,7 +7,7 @@ public class PlayerRayCast : MonoBehaviour
 {
     Ray ray;
     RaycastHit hit;
-    public static PlayerRayCast instance;
+    public static PlayerRayCast playerRaycast;
 
     private Camera mainCam;
     public Transform cameraTransform; // Drag your main camera here in Inspector
@@ -48,7 +48,7 @@ public class PlayerRayCast : MonoBehaviour
              
         }
         mainCam = Camera.main;
-        instance = this;
+        playerRaycast = this;
     }
 
     // Update is called once per frame

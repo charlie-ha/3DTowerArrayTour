@@ -53,7 +53,6 @@ public class ButtonMobile : MonoBehaviour
         timer = 0f;//reset timer
         epicLeverScript.unlocked = false;//dont let player interact lever
         isPressed = false;
-        Debug.Log("light off");
     }
 
     public void PressButton()//lights up button light and unlock lever
@@ -66,6 +65,7 @@ public class ButtonMobile : MonoBehaviour
             currentPosition.z -= 0.0008f; 
             button.transform.localPosition = currentPosition;//press button down
 
+            sound.pitch = Random.Range(0.9f, 1.1f);
             sound.Play();
             lightIndicator.material = lightOn;//light above button is on
 
