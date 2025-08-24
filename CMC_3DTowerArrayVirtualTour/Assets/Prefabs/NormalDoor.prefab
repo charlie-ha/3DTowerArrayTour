@@ -318,7 +318,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -567,7 +567,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -650,7 +650,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
+  m_ReceiveGI: 2
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -769,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3c9597e4b46b413fb62afbd08f2c1bd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.935
+      value: 13.814
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3c9597e4b46b413fb62afbd08f2c1bd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -777,7 +777,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3c9597e4b46b413fb62afbd08f2c1bd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.044
+      value: -0.754
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3c9597e4b46b413fb62afbd08f2c1bd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -785,7 +785,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3c9597e4b46b413fb62afbd08f2c1bd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3c9597e4b46b413fb62afbd08f2c1bd, type: 3}
       propertyPath: m_LocalRotation.y
@@ -793,7 +793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3c9597e4b46b413fb62afbd08f2c1bd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d3c9597e4b46b413fb62afbd08f2c1bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -898,15 +898,15 @@ LODGroup:
   m_AnimateCrossFading: 1
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.11625083
+  - screenRelativeHeight: 0.066937044
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2052336422967194138}
-  - screenRelativeHeight: 0.07993879
+  - screenRelativeHeight: 0.03605789
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4711129520547480598}
-  - screenRelativeHeight: 0.021988137
+  - screenRelativeHeight: 0.012027869
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 8899714017804060195}
