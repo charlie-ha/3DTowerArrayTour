@@ -1,25 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Content.Interaction;
 
 public class SwitchSceneScript : MonoBehaviour
 {
     public GameObject presentTowerA;
     public GameObject pastTowerA;
+    public XRLever lever;
 
     void Start()
     {
         pastTowerA.SetActive(false);
         presentTowerA.SetActive(true);
     }
-    public void TravelToThePast()
+    void Update()
     {
-        pastTowerA.SetActive(true);
-        presentTowerA.SetActive(false);
+        
     }
-    public void TravelToThePresent()
+
+    public void ActivateLever()
     {
-        pastTowerA.SetActive(false);
-        presentTowerA.SetActive(true);
+        if(lever.value == false)//present Tower A; if lever.value = 0 -> false
+        {
+            pastTowerA.SetActive(false);
+            presentTowerA.SetActive(true);
+        }
+        else if(lever.value == true)// past Tower A; if lever.value = 1 ->true
+        {
+            pastTowerA.SetActive(true);
+            presentTowerA.SetActive(false);
+        }
     }
+
 }

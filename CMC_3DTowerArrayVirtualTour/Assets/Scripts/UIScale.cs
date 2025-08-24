@@ -31,14 +31,27 @@ public class UIScale : MonoBehaviour
         {
             scale = 0.95f;
         }
-        // if (screenRatio >=1.5f && screenRatio <= 2.0f)//~ 1.7
-        // {
-        //     scale = 0.95f;
-        //     Debug.Log("activated");
-        // }
+        if (screenRatio >=1.5f && screenRatio <= 2.0f)//~ 1.7 for laptops and computers
+        {
+            scale = 1.6f;
+
+        }
         if (screenRatio > 2.0f) // e.g., ultra-wide phones
         {
             scale *= 0.95f;
+        }
+        if(Screen.height > 1500)
+        {
+            scale = 3.3f;
+        }
+        if(Screen.width > 2500)
+        {
+            scale = 2.5f;
+        }
+        if(Screen.width < 1600)//iphone
+        {
+            scale = 1.0f;
+    
         }
         
         //scale = Mathf.Clamp(scale, minScale, maxScale);
