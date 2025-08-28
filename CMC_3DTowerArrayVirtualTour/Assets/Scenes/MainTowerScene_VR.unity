@@ -39093,7 +39093,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 0.0063707274
+=======
+      value: 0.004550115
+>>>>>>> Stashed changes
 =======
       value: 0.004550115
 >>>>>>> Stashed changes
@@ -75390,7 +75394,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -0.0139209
+=======
+      value: -0.012220081
+>>>>>>> Stashed changes
 =======
       value: -0.012220081
 >>>>>>> Stashed changes
@@ -104696,7 +104704,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 0.012625446
+=======
+      value: 0.012274065
+>>>>>>> Stashed changes
 =======
       value: 0.012274065
 >>>>>>> Stashed changes
@@ -119901,6 +119913,9 @@ SceneRoots:
   - {fileID: 1339509379}
   - {fileID: 83689408}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
