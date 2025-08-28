@@ -39092,7 +39092,11 @@ PrefabInstance:
     - target: {fileID: 1035790433963668018, guid: 085ce58b196caa446a8545c9dd388793, type: 3}
       propertyPath: m_AnchoredPosition.y
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 0.0063707274
+=======
+      value: 0.004550115
+>>>>>>> Stashed changes
 =======
       value: 0.004550115
 >>>>>>> Stashed changes
@@ -75385,7 +75389,11 @@ PrefabInstance:
     - target: {fileID: 1035790433963668018, guid: 085ce58b196caa446a8545c9dd388793, type: 3}
       propertyPath: m_AnchoredPosition.y
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: -0.0139209
+=======
+      value: -0.012220081
+>>>>>>> Stashed changes
 =======
       value: -0.012220081
 >>>>>>> Stashed changes
@@ -104687,7 +104695,11 @@ PrefabInstance:
     - target: {fileID: 1035790433963668018, guid: 085ce58b196caa446a8545c9dd388793, type: 3}
       propertyPath: m_AnchoredPosition.y
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       value: 0.012625446
+=======
+      value: 0.012274065
+>>>>>>> Stashed changes
 =======
       value: 0.012274065
 >>>>>>> Stashed changes
@@ -119888,4 +119900,7 @@ SceneRoots:
   - {fileID: 1161098534}
   - {fileID: 1339509379}
   - {fileID: 83689408}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
